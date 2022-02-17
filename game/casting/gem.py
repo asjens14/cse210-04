@@ -1,4 +1,6 @@
+from random import randint, random
 from game.casting.actor import Actor
+from game.shared.point import Point
 
 class Gem(Actor):
     '''A moving Actor that moves and gives points
@@ -10,20 +12,7 @@ class Gem(Actor):
     def __init__(self) -> None:
         """Constructs a new gem"""
         super().__init__()
-        self._score = 10
+        self._score=0
     
-    def set_message(self, message) -> None:
-        """Called to set the artifact's message
-            
-            Args:
-            message(str): a message for the player
-        """
-        self._message=message
-    
-    def get_message(self) -> str:
-        """Called to get the artifacts message
-
-        returns:
-        _message(str): a message for the player
-        """
-        return self._message
+    def get_score(self):
+        return self._score

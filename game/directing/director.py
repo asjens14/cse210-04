@@ -17,6 +17,7 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
+        self._score=0
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -49,17 +50,19 @@ class Director:
         """
         banner = cast.get_first_actor("banners")
         robot = cast.get_first_actor("robots")
-        artifacts = cast.get_actors("artifacts")
+        gems = cast.get_actors("gems")
+        gem = cast.get_first_actor("gems")
 
         banner.set_text("")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
-        
-        for artifact in artifacts:
-            if robot.get_position().equals(artifact.get_position()):
-                message = artifact.get_message()
-                banner.set_text(message)    
+        gem.move_next(max_x,max_y)
+
+        for gem in gems:
+            if robot.get_position().equals(gem.get_position()):
+                self._score += gem.get_score()
+                banner.set_text("Score: "+str(self._score))    
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.

@@ -3,6 +3,7 @@ import random
 
 from game.casting.actor import Actor
 from game.casting.cast import Cast
+from game.casting.gems.small_rock import Small_Rock
 
 from game.directing.director import Director
 
@@ -33,7 +34,7 @@ def main():
     
     # create the banner
     banner = Actor()
-    banner.set_text("")
+    banner.set_text("Score: 0")
     banner.set_font_size(FONT_SIZE)
     banner.set_color(WHITE)
     banner.set_position(Point(CELL_SIZE, 0))
@@ -51,6 +52,14 @@ def main():
     robot.set_position(position)
     cast.add_actor("robots", robot)
     
+
+    
+    gem = Small_Rock()
+    gem.set_text("[]")
+    gem.set_font_size(FONT_SIZE)
+    gem.set_position(Point(random.randint(1,MAX_X),0))
+    cast.add_actor("gems", gem)
+
     # create the artifacts
     # with open(DATA_PATH) as file:
     #     data = file.read()
