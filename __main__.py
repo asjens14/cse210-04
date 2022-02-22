@@ -21,7 +21,7 @@ CELL_SIZE = 15
 FONT_SIZE = 15
 COLS = 60
 ROWS = 40
-CAPTION = "Robot Finds Kitten"
+CAPTION = "Greed"
 DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
 WHITE = Color(255, 255, 255)
 DEFAULT_ARTIFACTS = 40
@@ -34,7 +34,7 @@ def main():
     
     # create the banner
     banner = Actor()
-    banner.set_text("Score: 0")
+    banner.set_text("Score: ")
     banner.set_font_size(FONT_SIZE)
     banner.set_color(WHITE)
     banner.set_position(Point(CELL_SIZE, 0))
@@ -52,15 +52,17 @@ def main():
     robot.set_position(position)
     cast.add_actor("robots", robot)
     
-
+    #Create gems
+    x = random.randint(1, COLS - 1)
+    position = Point(x, 0)
+    position = position.scale(CELL_SIZE)
     
     gem = Small_Rock()
     gem.set_text("[]")
     gem.set_font_size(FONT_SIZE)
-    gem.set_position(Point(random.randint(1,MAX_X),0))
+    gem.set_position(position)
     cast.add_actor("gems", gem)
-
-    # create the artifacts
+        # create the artifacts
     # with open(DATA_PATH) as file:
     #     data = file.read()
     #     messages = data.splitlines()

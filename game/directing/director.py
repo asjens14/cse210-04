@@ -51,18 +51,17 @@ class Director:
         banner = cast.get_first_actor("banners")
         robot = cast.get_first_actor("robots")
         gems = cast.get_actors("gems")
-        gem = cast.get_first_actor("gems")
 
-        banner.set_text("")
+        banner.set_text(f"Score: {self._score}")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
-        gem.move_next(max_x,max_y)
 
         for gem in gems:
+            gem.move_next(max_x,max_y)
             if robot.get_position().equals(gem.get_position()):
                 self._score += gem.get_score()
-                banner.set_text("Score: "+str(self._score))    
+                banner.set_text(f"Score: {self._score}")    
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
