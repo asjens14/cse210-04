@@ -15,4 +15,5 @@ class Gem(Actor):
         self._score=0
     
     def get_score(self):
-        return self._score
+      """Returns the score"""
+      return self._score

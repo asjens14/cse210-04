@@ -1,3 +1,10 @@
+from game.shared.point import Point
+from game.casting.gems.small_rock import Small_Rock
+from game.casting.gems.large_rock import Large_Rock
+from game.casting.gems.blue_gem import Blue_Gem
+from game.casting.gems.rainbow_gem import Rainbow_Gem
+from game.casting.gems.red_gem import Red_Gem
+import random
 class Director:
     """A person who directs the game. 
     
@@ -57,12 +64,30 @@ class Director:
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
 
+        #goes through each individual gem and updates it
         for gem in gems:
             gem.move_next(max_x,max_y)
-            if robot.get_position().equals(gem.get_position()):
+            position = gem.get_position()
+            if robot.get_position().equals(position):
+                cast.remove_actor("gems",gem)
                 self._score += gem.get_score()
                 banner.set_text(f"Score: {self._score}")    
+            if position.equals(Point(position.get_x(), max_y - 15)):
+                cast.remove_actor("gems",gem)
         
+        COLS = 60
+        CELL_SIZE = 15
+        FONT_SIZE = 15
+
+        x = random.randint(1, COLS - 1)
+        position = Point(x, 0)
+        position = position.scale(CELL_SIZE)
+        
+        gem = random.choice([Small_Rock(), Large_Rock(), Blue_Gem(), Rainbow_Gem(), Red_Gem()])
+        gem.set_font_size(FONT_SIZE)
+        gem.set_position(position)
+        cast.add_actor("gems", gem)
+
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
         

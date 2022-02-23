@@ -62,6 +62,7 @@ def main():
     gem.set_font_size(FONT_SIZE)
     gem.set_position(position)
     cast.add_actor("gems", gem)
+
         # create the artifacts
     # with open(DATA_PATH) as file:
     #     data = file.read()
