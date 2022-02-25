@@ -4,7 +4,7 @@ from game.shared.point import Point
 
 class Red_Gem(Gem):
     def __init__(self) -> None:
-        """Creates a new intance of a small rock
+        """Creates a new intance of a red gem
         Inherits from the Gem class
         """
         super().__init__()
