@@ -13,6 +13,7 @@ class Gem(Actor):
         """Constructs a new gem"""
         super().__init__()
         self._score=0
+        self.set_velocity(Point(0,15))
     
     def get_score(self):
       """Returns the score"""

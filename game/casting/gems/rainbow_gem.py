@@ -12,4 +12,3 @@ class Rainbow_Gem(Gem):
         self._score=10
         self.set_text("*")
         self.set_color(Color(rand.randint(0,255),rand.randint(0,255),rand.randint(0,255)))
-        self.set_velocity(Point(0,15))

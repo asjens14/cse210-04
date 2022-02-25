@@ -23,4 +23,3 @@ class Small_Rock(Gem):
         self._score=-10
         self.set_text("[]")
         self.set_color(Color(0,255,0))
-        self.set_velocity(Point(0,15))

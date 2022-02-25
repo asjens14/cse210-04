@@ -11,4 +11,3 @@ class Blue_Gem(Gem):
         self._score=20
         self.set_text("*")
         self.set_color(Color(0,0,255))
-        self.set_velocity(Point(0,15))

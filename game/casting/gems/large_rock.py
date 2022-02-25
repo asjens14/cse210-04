@@ -8,4 +8,3 @@ class Large_Rock(Gem):
         self._score=-20
         self.set_text("0")
         self.set_color(Color(255,255,0))
-        self.set_velocity(Point(0,15))
